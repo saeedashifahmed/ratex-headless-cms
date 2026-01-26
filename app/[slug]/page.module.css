@@ -1,17 +1,16 @@
 .articleContainer {
-    max-width: 760px;
+    max-width: var(--max-width-content);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 4rem 1.5rem;
 }
 
 .header {
-    text-align: center;
     margin-bottom: 3rem;
-    padding-top: 2rem;
+    text-align: center;
 }
 
 .meta {
-    color: var(--primary);
+    color: var(--accent-color);
     font-size: 0.9rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -23,18 +22,29 @@
     font-size: 3rem;
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 2rem;
-    color: #111;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
     letter-spacing: -0.03em;
+}
+
+.authorLine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
 }
 
 .featuredImageWrapper {
     width: 100%;
-    height: 450px;
+    height: auto;
+    min-height: 400px;
+    max-height: 600px;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 4rem;
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .featuredImage {
@@ -44,39 +54,34 @@
 }
 
 .content {
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     line-height: 1.8;
-    color: #333;
-    font-family: 'Georgia', serif;
-    /* Often better for long form reading, or keep sans */
-    --font-content: 'Outfit', sans-serif;
-    font-family: var(--font-content);
+    color: var(--text-primary);
+    font-family: var(--font-inter);
+    /* Using Inter for clean look, or serif if preferred */
 }
 
 .content h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-top: 3.5rem;
-    margin-bottom: 1.5rem;
-    color: #111;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
 }
 
 .content h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
-    color: #111;
-    font-weight: 700;
 }
 
 .content p {
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
 }
 
 .content ul,
 .content ol {
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
     padding-left: 1.5rem;
 }
 
@@ -85,36 +90,28 @@
 }
 
 .content a {
-    color: var(--primary);
+    color: var(--accent-color);
     text-decoration: underline;
-    text-decoration-color: rgba(0, 112, 243, 0.3);
-    text-underline-offset: 4px;
-}
-
-.content a:hover {
-    text-decoration-color: var(--primary);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 .content blockquote {
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid var(--accent-color);
     padding-left: 1.5rem;
     margin: 2.5rem 0;
+    font-size: 1.25rem;
     font-style: italic;
-    font-size: 1.3rem;
-    color: #555;
-    background: var(--surface-highlight);
-    padding: 2rem;
-    border-radius: 0 12px 12px 0;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
 }
 
-.content pre {
-    background: #f4f4f4;
-    padding: 1.5rem;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin: 2rem 0;
-    border: 1px solid var(--border);
-    color: #333;
+/* Table styles specifically targeted within content */
+.content table {
+    /* Reuse global table styles/logic or enforce specific overrides */
+    margin: 2.5rem 0;
 }
 
 .content img {
@@ -122,15 +119,4 @@
     height: auto;
     border-radius: 8px;
     margin: 2rem 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 768px) {
-    .title {
-        font-size: 2rem;
-    }
-
-    .featuredImageWrapper {
-        height: 250px;
-    }
 }

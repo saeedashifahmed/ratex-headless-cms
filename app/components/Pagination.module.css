@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 4rem 0 2rem;
+}
+
+.link {
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    border: 1px solid var(--border-color);
+    background: white;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.link:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

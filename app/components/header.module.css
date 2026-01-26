@@ -7,41 +7,34 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border-bottom: 1px solid var(--border);
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    /* Hardcoding glass fallback */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .layoutContainer {
     width: 100%;
-    max-width: var(--max-width);
+    max-width: var(--max-width-site);
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -0.05em;
-    color: var(--foreground);
+    color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 8px;
 }
 
 .logo span {
-    color: var(--primary);
+    color: var(--accent-color);
 }
 
 .nav {
@@ -50,20 +43,29 @@
 }
 
 .navLink {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: #555;
+    color: var(--text-secondary);
     transition: color 0.2s ease;
-    text-transform: capitalize;
 }
 
 .navLink:hover {
-    color: var(--primary);
+    color: var(--text-primary);
+}
+
+.desktopSearch {
+    display: none;
+    margin-left: 2rem;
+}
+
+@media (min-width: 900px) {
+    .desktopSearch {
+        display: block;
+    }
 }
 
 @media (max-width: 768px) {
     .nav {
         display: none;
-        /* Mobile menu implementation usually requires client component state, keeping simple for now or can implement basic hamburger */
     }
 }

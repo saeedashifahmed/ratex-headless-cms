@@ -1,20 +1,18 @@
 import Link from 'next/link';
 import styles from './header.module.css';
 import { getMenus } from '@/lib/api';
+import Search from './Search';
 
 export default async function Header() {
     const menus = await getMenus();
 
-    // Ratex.co styled navigation
+    // Ratex.co styled navigation (Filtered to existing categories)
     const staticLinks = [
-        { label: 'Technology', url: '/category/technology' },
         { label: 'Business', url: '/category/business' },
-        { label: 'Lifestyle', url: '/category/lifestyle' },
+        { label: 'Finance', url: '/category/finance' },
+        { label: 'Stories', url: '/category/stories' },
+        { label: 'Credit Cards', url: '/category/credit-cards' },
     ];
-
-    // Merge with dynamic menus if available, or just use dynamic. 
-    // For now, if dynamic menu "Primary" exists, use it. Else fallback.
-    // Note: API query asks for "PRIMARY" location.
 
     const menuItems = menus.header.length > 0 ? menus.header : staticLinks;
 
@@ -24,25 +22,29 @@ export default async function Header() {
                 <Link href="/" className={styles.logo}>
                     RATEX<span>.</span>
                 </Link>
-                <nav className={styles.nav}>
-                    {menuItems.map((item) => {
-                        // Handle WordPress absolute URLs if necessary, usually we want relative paths for internal links
-                        const url = item.uri || item.url;
-                        // Simple check if it's an external link
-                        const isExternal = url.startsWith('http') && !url.includes('ratex.co');
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <nav className={styles.nav}>
+                        {menuItems.map((item) => {
+                            const url = item.uri || item.url;
+                            const isExternal = url.startsWith('http') && !url.includes('ratex.co');
 
-                        return (
-                            <Link
-                                key={item.label}
-                                href={url}
-                                className={styles.navLink}
-                                target={isExternal ? "_blank" : undefined}
-                            >
-                                {item.label}
-                            </Link>
-                        )
-                    })}
-                </nav>
+                            return (
+                                <Link
+                                    key={item.label}
+                                    href={url}
+                                    className={styles.navLink}
+                                    target={isExternal ? "_blank" : undefined}
+                                >
+                                    {item.label}
+                                </Link>
+                            )
+                        })}
+                    </nav>
+
+                    <div className={styles.desktopSearch}>
+                        <Search />
+                    </div>
+                </div>
             </div>
         </header>
     );

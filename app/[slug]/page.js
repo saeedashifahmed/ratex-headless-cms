@@ -1,6 +1,8 @@
 import { getPostBySlug, getAllPosts, replaceUrls } from '@/lib/api';
 import { notFound } from 'next/navigation';
 import styles from './page.module.css';
+import SocialShare from '@/app/components/SocialShare';
+import AuthorBio from '@/app/components/AuthorBio';
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
@@ -20,9 +22,9 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
     const posts = await getAllPosts();
-    return posts.map((post) => ({
+    return posts.nodes?.map((post) => ({
         slug: post.slug,
-    }));
+    })) || [];
 }
 
 export default async function Post({ params }) {
@@ -46,11 +48,13 @@ export default async function Post({ params }) {
                             day: 'numeric'
                         })}
                     </time>
-                    {post.author?.node?.name && (
-                        <span> • {post.author.node.name}</span>
-                    )}
                 </div>
                 <h1 className={styles.title}>{post.title}</h1>
+                {post.author?.node?.name && (
+                    <div className={styles.authorLine}>
+                        By {post.author.node.name}
+                    </div>
+                )}
             </header>
 
             {post.featuredImage?.node?.sourceUrl && (
@@ -63,10 +67,18 @@ export default async function Post({ params }) {
                 </div>
             )}
 
+            <div className={styles.socialTop}>
+                <SocialShare title={post.title} />
+            </div>
+
             <div
                 className={styles.content}
                 dangerouslySetInnerHTML={{ __html: content }}
             />
+
+            <hr style={{ margin: '4rem 0', border: 'none', borderTop: '1px solid var(--border-color)' }} />
+
+            <AuthorBio author={post.author?.node} />
         </article>
     );
 }

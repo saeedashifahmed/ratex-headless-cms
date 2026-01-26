@@ -1,0 +1,32 @@
+.searchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border-radius: 99px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    font-family: var(--font-inter);
+}
+
+.input:focus {
+    outline: none;
+    background: white;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.1);
+}
+
+.icon {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+}
