@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/lib/api';
+import { getAllPosts, replaceUrls } from '@/lib/api';
 import Link from 'next/link';
 import styles from './page.module.css';
 
@@ -60,7 +60,7 @@ export default async function Home() {
                     <h2 className={styles.cardTitle}>{post.title}</h2>
                     <div
                       className={styles.cardExcerpt}
-                      dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                      dangerouslySetInnerHTML={{ __html: replaceUrls(post.excerpt) }}
                     />
                     <span className={styles.cardLink}>Read Article &rarr;</span>
                   </div>

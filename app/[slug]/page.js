@@ -1,4 +1,4 @@
-import { getPostBySlug, getAllPosts } from '@/lib/api';
+import { getPostBySlug, getAllPosts, replaceUrls } from '@/lib/api';
 import { notFound } from 'next/navigation';
 import styles from './page.module.css';
 
@@ -33,6 +33,8 @@ export default async function Post({ params }) {
         notFound();
     }
 
+    const content = replaceUrls(post.content);
+
     return (
         <article className={`${styles.articleContainer} animate-fade-in`}>
             <header className={styles.header}>
@@ -63,7 +65,7 @@ export default async function Post({ params }) {
 
             <div
                 className={styles.content}
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: content }}
             />
         </article>
     );
