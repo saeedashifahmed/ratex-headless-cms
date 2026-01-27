@@ -1,29 +1,87 @@
+/* ============================================
+   PAGINATION STYLES - Premium Finance Blog
+   ============================================ */
+
 .wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 4rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
 }
 
 .link {
-    padding: 0.75rem 1.5rem;
-    border-radius: 99px;
-    border: 1px solid var(--border-color);
-    background: white;
-    color: var(--text-secondary);
-    font-weight: 500;
-    transition: all 0.2s ease;
-    font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
 }
 
 .link:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
-.disabled {
-    opacity: 0.5;
-    pointer-events: none;
+.link svg {
+  transition: transform var(--transition-fast);
+}
+
+.link:hover svg {
+  transform: translateX(4px);
+}
+
+/* Page Numbers */
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pageNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.pageNumber:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-medium);
+}
+
+.pageNumberActive {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+.pageNumberActive:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* Ellipsis */
+.ellipsis {
+  width: 40px;
+  text-align: center;
+  color: var(--text-tertiary);
 }

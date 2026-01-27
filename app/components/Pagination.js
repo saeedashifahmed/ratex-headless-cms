@@ -5,22 +5,15 @@ export default function Pagination({ pageInfo, basePath = '/' }) {
     if (!pageInfo) return null;
     const { hasNextPage, endCursor } = pageInfo;
 
-    // Simple "Load More" style or Next/Prev link logic.
-    // Since WP GraphQL cursor pagination is tricky with simple URLs (requires state or ugly cursors in URL),
-    // we'll implement a "Next Page" link that passes the cursor.
-    // BUT: Next.js standard pagination usually uses ?page=2. 
-    // WP GraphQL uses cursors. 
-    // For a headless blog, a "Load More" button (Client Component) is best, OR standard links.
-
-    // Let's stick to a simple Next link for now if possible, but honestly for a blog listing,
-    // cursor based pagination via URL ?after=CURSOR works.
-
     if (!hasNextPage) return null;
 
     return (
         <div className={styles.wrapper}>
             <Link href={`${basePath}?after=${endCursor}`} className={styles.link}>
-                Next Page &rarr;
+                Load More Articles
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
             </Link>
         </div>
     );

@@ -1,25 +1,86 @@
-.wrapper {
-    display: flex;
-    gap: 1rem;
-    margin: 2rem 0;
+/* ============================================
+   SOCIAL SHARE STYLES - Premium Finance Blog
+   ============================================ */
+
+.shareWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.shareBtn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background: white;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
+.shareLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
 }
 
-.shareBtn:hover {
-    background: var(--bg-secondary);
-    border-color: var(--border-strong);
-    color: var(--text-primary);
+.shareButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.shareButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.shareButton:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+/* Specific platform colors on hover */
+.shareButton.twitter:hover {
+  background: #1DA1F2;
+  border-color: #1DA1F2;
+  color: white;
+}
+
+.shareButton.linkedin:hover {
+  background: #0A66C2;
+  border-color: #0A66C2;
+  color: white;
+}
+
+.shareButton.facebook:hover {
+  background: #1877F2;
+  border-color: #1877F2;
+  color: white;
+}
+
+.shareButton.copy:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+/* Compact variant */
+.compact {
+  gap: 0.75rem;
+}
+
+.compact .shareButton {
+  width: 36px;
+  height: 36px;
+}
+
+/* Vertical layout */
+.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.vertical .shareButtons {
+  flex-direction: column;
 }
