@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [http://ratex.co](http://ratex.co) with your browser to see the result.
+Open [https://ratex.co](https://ratex.co) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
